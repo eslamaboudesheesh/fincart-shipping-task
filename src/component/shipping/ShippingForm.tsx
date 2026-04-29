@@ -88,7 +88,8 @@ export const ShippingForm: React.FC = () => {
 
     const { trigger, handleSubmit } = methods;
 
-    const handleNext = async () => {
+    const handleNext = async (e?: React.MouseEvent | React.KeyboardEvent) => {
+        if (e) e.preventDefault();
         let isValid = false;
         if (activeStep === 0) isValid = await trigger('origin');
         if (activeStep === 1) isValid = await trigger('destination');
@@ -103,6 +104,7 @@ export const ShippingForm: React.FC = () => {
     };
 
     const onSubmit = (data: ShippingFormData) => {
+
         searchQuotes(data);
     };
 
@@ -115,20 +117,29 @@ export const ShippingForm: React.FC = () => {
                 </Paper>
 
                 <Paper elevation={0} sx={{ p: { xs: 3, md: 5 }, borderRadius: 2, border: '1px solid #E2E8F0', mb: 4 }}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        onKeyDown={(e) => {
+                            // Prevent Enter key from submitting the form early
+                            if (e.key === 'Enter' && activeStep < steps.length - 1) {
+                                e.preventDefault();
+                                handleNext(e);
+                            }
+                        }}
+                    >
                         {activeStep === 0 && <OriginStep />}
                         {activeStep === 1 && <DestinationStep />}
                         {activeStep === 2 && <PackageStep />}
 
                         <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2, mt: 5 }}>
                             {activeStep > 0 && (
-                                <Button onClick={handleBack} variant="outlined" color="inherit" sx={{ minWidth: 100 }}>
+                                <Button type="button" onClick={handleBack} variant="outlined" color="inherit" sx={{ minWidth: 100 }}>
                                     Back
                                 </Button>
                             )}
 
                             {activeStep < steps.length - 1 ? (
-                                <Button onClick={handleNext} variant="contained" color="primary" sx={{ minWidth: 120 }}>
+                                <Button type="button" onClick={handleNext} variant="contained" color="primary" sx={{ minWidth: 120 }}>
                                     Next
                                 </Button>
                             ) : (
