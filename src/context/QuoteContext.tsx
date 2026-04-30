@@ -17,12 +17,26 @@ interface QuoteContextType {
 
 const QuoteContext = createContext<QuoteContextType | undefined>(undefined);
 
-export const QuoteProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [formData, setFormData] = useState<Partial<ShippingFormData>>({});
-  const [results, setResults] = useState<CourierRate[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false);
-  const [selectedRate, setSelectedRate] = useState<CourierRate | null>(null);
+export const QuoteProvider: React.FC<{ 
+  children: ReactNode;
+  initialData?: Partial<ShippingFormData>;
+  initialSelectedRate?: CourierRate | null;
+  initialResults?: CourierRate[];
+  initialIsLoading?: boolean;
+  initialHasSearched?: boolean;
+}> = ({ 
+  children, 
+  initialData = {}, 
+  initialSelectedRate = null,
+  initialResults = [],
+  initialIsLoading = false,
+  initialHasSearched = false
+}) => {
+  const [formData, setFormData] = useState<Partial<ShippingFormData>>(initialData);
+  const [results, setResults] = useState<CourierRate[]>(initialResults);
+  const [isLoading, setIsLoading] = useState(initialIsLoading);
+  const [hasSearched, setHasSearched] = useState(initialHasSearched);
+  const [selectedRate, setSelectedRate] = useState<CourierRate | null>(initialSelectedRate);
 
   const searchQuotes = async (data: ShippingFormData) => {
     setIsLoading(true);

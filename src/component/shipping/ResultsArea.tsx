@@ -7,7 +7,15 @@ export const ResultsArea: React.FC = () => {
   const { results, isLoading, hasSearched, selectedRate, setSelectedRate } = useQuoteContext();
 
   if (!hasSearched && !isLoading) {
-    return null; // Don't show anything until a search is performed
+    return (
+      <Box sx={{ mt: 6, textAlign: 'center', py: 10, bgcolor: '#F8FAFC', borderRadius: '12px', border: '1px dashed #E2E8F0' }}>
+        <Box sx={{ width: 64, height: 64, borderRadius: '50%', bgcolor: '#F1F5F9', display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 2, mx: 'auto' }}>
+           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </Box>
+        <Typography variant="h6" color="text.secondary" gutterBottom>No Shipping Rates Yet</Typography>
+        <Typography variant="body2" color="text.secondary">Complete the form and click "Get Quotes" to see available shipping options.</Typography>
+      </Box>
+    );
   }
 
   return (
