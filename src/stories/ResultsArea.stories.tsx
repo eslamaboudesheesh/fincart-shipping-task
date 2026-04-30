@@ -5,13 +5,13 @@ import { ResultsArea } from '../component/shipping/ResultsArea';
 import { QuoteProvider } from '../context/QuoteContext';
 import { mockCourierRates } from '../api/mockData';
 
-const meta: Meta<typeof ResultsArea> = {
+const meta: Meta<any> = {
     title: 'Shipping/ResultsArea',
     component: ResultsArea,
     decorators: [
         (Story, context) => (
-            <QuoteProvider
-                initialResults={context.args.initialResults}
+            <QuoteProvider 
+                initialResults={context.args.initialResults} 
                 initialIsLoading={context.args.initialIsLoading}
                 initialHasSearched={context.args.initialHasSearched}
             >

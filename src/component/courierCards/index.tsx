@@ -22,7 +22,7 @@ const StyledCard = styled(Card, {
 }));
 
 // Floating badge on the top border
-const BadgeContainer = styled(Box)(({ theme }) => ({
+const BadgeContainer = styled(Box)(() => ({
     position: 'absolute',
     top: '-9px',
     left: '16px',
@@ -40,14 +40,14 @@ const StyledBadge = styled(Typography)<{ type: 'cheapest' | 'fastest' }>(({ them
     color: type === 'cheapest' ? theme.palette.success.main : '#F59E0B',
 }));
 
-const PriceDisplay = styled(Box)(({ theme }) => ({
+const PriceDisplay = styled(Box)(() => ({
     display: 'flex',
     alignItems: 'baseline',
     gap: '4px',
     marginTop: '16px',
 }));
 
-const EstDeliveryBox = styled(Box)(({ theme }) => ({
+const EstDeliveryBox = styled(Box)(() => ({
     border: '1px solid #E2E8F0',
     borderRadius: '8px',
     padding: '10px 14px',

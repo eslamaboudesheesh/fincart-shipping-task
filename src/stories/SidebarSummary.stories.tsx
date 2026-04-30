@@ -3,13 +3,13 @@ import { SidebarSummary } from '../component/shipping/SidebarSummary';
 import { QuoteProvider } from '../context/QuoteContext';
 import { Box } from '@mui/material';
 
-const meta: Meta<typeof SidebarSummary> = {
+const meta: Meta<any> = {
     title: 'Shipping/SidebarSummary',
     component: SidebarSummary,
     decorators: [
         (Story, context) => (
-            <QuoteProvider
-                initialData={context.args.initialData}
+            <QuoteProvider 
+                initialData={context.args.initialData} 
                 initialSelectedRate={context.args.initialSelectedRate}
             >
                 <Box sx={{ width: 350 }}>

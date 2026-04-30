@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CustomStepper } from '../component/shipping/CustomStepper';
-import { Box } from '@mui/material';
 
 const meta: Meta<typeof CustomStepper> = {
     title: 'Shipping/CustomStepper',
