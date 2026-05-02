@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Skeleton } from '@mui/material';
 import { CourierCard } from '../courierCards';
-import { useQuoteContext } from '../../context/QuoteContext';
+import { useQuoteContext } from '../../hook/useQuoteContext';
 
 export const ResultsArea: React.FC = () => {
   const { results, isLoading, hasSearched, selectedRate, setSelectedRate } = useQuoteContext();

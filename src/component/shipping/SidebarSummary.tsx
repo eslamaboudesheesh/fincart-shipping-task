@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, Paper, Divider } from '@mui/material';
-import { useQuoteContext } from '../../context/QuoteContext';
+import { useQuoteContext } from '../../hook/useQuoteContext';
 
 export const SidebarSummary: React.FC = () => {
   const { formData, selectedRate } = useQuoteContext();

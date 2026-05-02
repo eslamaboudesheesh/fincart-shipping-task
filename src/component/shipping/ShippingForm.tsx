@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, TextField, Typography, Paper } from '@mui/material';
 import { CustomStepper } from './CustomStepper';
 import { shippingSchema, type ShippingFormData } from '../../utils/shippingSchema';
-import { useQuoteContext } from '../../context/QuoteContext';
+import { useQuoteContext } from '../../hook/useQuoteContext';
 
 const steps = ['Origin', 'Destination', 'Package'];
 
@@ -59,7 +59,7 @@ const PackageStep = () => {
     );
 };
 
-// Extracted Realtime Watcher so we don't re-render the whole form component
+// use watch hook to prevent re-rendering the whole form component
 const RealTimeWatcher = () => {
     const { control } = useFormContext<ShippingFormData>();
     const { setFormData } = useQuoteContext();
@@ -85,7 +85,7 @@ export const ShippingForm: React.FC = () => {
             package: { weight: undefined, length: undefined, width: undefined, height: undefined },
         }
     });
-
+    // trigger to make validation for part of the form at a time
     const { trigger, handleSubmit } = methods;
 
     const handleNext = async (e?: React.MouseEvent | React.KeyboardEvent) => {
