@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, type ReactNode } from 'react';
+import React, { createContext, useState, type ReactNode } from 'react';
 
 import { mockCourierRates } from '../api/mockData';
 import type { ShippingFormData } from '../utils/shippingSchema';
